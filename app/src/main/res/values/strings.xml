@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">English_Assistant</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Đặng Văn Chức</string>
+    <string name="nav_header_subtitle">B1706677</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_favorite">My favorite</string>
+    <string name="menu_flash_card">Flash card</string>
+    <string name="menu_profile">My profile</string>
+    <string name="menu_account">My account</string>
+    <string name="menu_password">Change password</string>
+    <string name="menu_logout">Logout</string>
+</resources>
