@@ -10,17 +10,17 @@ import java.util.List;
 
 import thud.english_assistant.Topic;
 
-public class TopicAdapter {
+public class TopicRepository {
     private DbHelper myDbHelper;
     private SQLiteDatabase db;
     private String[] allColumns = { DbHelper.TOPIC_ID,
             DbHelper.TOPIC_NAME, DbHelper.TOPIC_IMG};
-    public TopicAdapter(Context context) {
+    public TopicRepository(Context context) {
         myDbHelper = new DbHelper(context);
         db = myDbHelper.getWritableDatabase();
     }
 
-    public TopicAdapter() {
+    public TopicRepository() {
 
     }
 

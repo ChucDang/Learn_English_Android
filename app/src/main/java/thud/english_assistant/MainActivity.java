@@ -1,6 +1,7 @@
 package thud.english_assistant;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 
@@ -13,13 +14,20 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import thud.english_assistant.databinding.ActivityMainBinding;
+import thud.english_assistant.xuly.Topic_List_Adapter;
 
 public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
     private ActivityMainBinding binding;
+    private RecyclerView rvItems;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +46,9 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
+
             }
+
         });
         DrawerLayout drawer = binding.drawerLayout;
         NavigationView navigationView = binding.navView;
@@ -51,6 +61,13 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
+        List<Topic> topics = new ArrayList<>();
+        topics.add(new Topic(0,"Dang Van Chuc Chuc","@mipmap/ic_avatar"));
+        rvItems = findViewById(R.id.RecyclerView);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
+        rvItems.setLayoutManager(layoutManager);
+        rvItems.setHasFixedSize(true);
+        rvItems.setAdapter(new Topic_List_Adapter(this, topics));
     }
     // Ghi đè để chỉ định một menu tùy chỉnh để thổi phồng các tài nguyên trong menu
     @Override

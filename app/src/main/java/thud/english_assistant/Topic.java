@@ -5,7 +5,10 @@ public class Topic {
     private String name_topic;
     private String img;
 
-    public Topic(String food, String s) {
+    public Topic(int id, String name_topic, String img) {
+        this.id = id;
+        this.name_topic = name_topic;
+        this.img = img;
     }
 
     public Topic() {
