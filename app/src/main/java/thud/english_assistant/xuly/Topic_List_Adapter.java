@@ -39,19 +39,22 @@ public class Topic_List_Adapter extends RecyclerView.Adapter<Topic_List_Adapter.
 
         return new ViewHolder(view);
     }
+    public static int getResId(String resName, Class<?> c) {
+
+        try {
+            Field idField = c.getDeclaredField(resName);
+            return idField.getInt(idField);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return -1;
+        }
+    }
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         // Get element from your dataset at this position and replace the
         // contents of the view with that element
         holder.getTextView().setText(topics.get(position).getName_topic());
-        Field resId;
-        try {
-             resId = R.mipmap.class.getDeclaredField(topics.get(position).getImg());
-            holder.getImageView().setImageResource(resId.hashCode());
-        } catch (NoSuchFieldException e) {
-            e.printStackTrace();
-            Log.i("Lỗi ảnh","Không tải được ảnh");
-        }
+        holder.getImageView().setImageResource(getResId(topics.get(position).getImg(),R.mipmap.class));
 
     }
 
