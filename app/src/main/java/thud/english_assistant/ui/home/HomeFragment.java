@@ -33,11 +33,15 @@ public class HomeFragment extends Fragment{
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
         List<Topic> topics = new ArrayList<>();
-        topics.add(new Topic(0,"Dang Van Chuc","ic_avatar"));
-        topics.add(new Topic(1,"Dương Thị Lan","ic_food"));
-        topics.add(new Topic(2,"Châu Gia Cường","ic_building"));
+        topics.add(new Topic(0,"Book","ic_book"));
+        topics.add(new Topic(1,"Food","ic_food"));
+        topics.add(new Topic(2,"Transport","ic_transport"));
+        topics.add(new Topic(3,"People","ic_people"));
+        topics.add(new Topic(4,"Job","ic_job"));
+        topics.add(new Topic(5,"Signal","ic_signal"));
+        topics.add(new Topic(6,"Building","ic_building"));
         rvItems =view.findViewById(R.id.RecyclerView);
-        GridLayoutManager layoutManager = new GridLayoutManager(view.getContext(), 3);
+        GridLayoutManager layoutManager = new GridLayoutManager(view.getContext(), 2);
         rvItems.setLayoutManager(layoutManager);
         rvItems.setHasFixedSize(true);
         rvItems.setAdapter(new Topic_List_Adapter(view.getContext(), topics));
