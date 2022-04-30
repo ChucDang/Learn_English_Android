@@ -1,8 +1,5 @@
-package thud.english_assistant.xuly;
+package thud.english_assistant.xuly.Topic;
 import android.content.Context;
-import android.graphics.drawable.Icon;
-import android.net.Uri;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,7 +13,6 @@ import java.lang.reflect.Field;
 import java.util.List;
 
 import thud.english_assistant.R;
-import thud.english_assistant.Topic;
 
 public class Topic_List_Adapter extends RecyclerView.Adapter<Topic_List_Adapter.ViewHolder> {
     private List<Topic> topics;
@@ -39,7 +35,7 @@ public class Topic_List_Adapter extends RecyclerView.Adapter<Topic_List_Adapter.
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         // Create a new view, which defines the UI of the list item
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.custom_grid_cell, parent, false);
+                .inflate(R.layout.custom_cell_topic, parent, false);
 
         return new ViewHolder(view);
     }

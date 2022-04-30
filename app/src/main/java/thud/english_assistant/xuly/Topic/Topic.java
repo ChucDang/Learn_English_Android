@@ -1,4 +1,4 @@
-package thud.english_assistant;
+package thud.english_assistant.xuly.Topic;
 
 public class Topic {
     private int id;

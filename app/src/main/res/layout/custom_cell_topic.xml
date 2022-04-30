@@ -12,7 +12,8 @@
         android:layout_marginTop="40dp"
         android:scaleType="fitCenter"
         android:layout_gravity="top|center"
-        android:layout_marginBottom="30dp"/>
+        android:layout_marginBottom="30dp"
+        />
     <TextView
         android:id="@+id/textView"
         style="@style/LabelStyleMedium"

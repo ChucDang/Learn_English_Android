@@ -5,25 +5,22 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProvider;
+import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import thud.english_assistant.MainActivity;
 import thud.english_assistant.R;
-import thud.english_assistant.Topic;
-import thud.english_assistant.databinding.CustomGridCellBinding;
-import thud.english_assistant.databinding.FragmentGalleryBinding;
-import thud.english_assistant.databinding.FragmentHomeBinding;
-import thud.english_assistant.xuly.Topic_List_Adapter;
+import thud.english_assistant.xuly.Topic.Topic;
+import thud.english_assistant.xuly.Topic.Topic_List_Adapter;
 
 public class HomeFragment extends Fragment{
     private RecyclerView rvItems;
@@ -40,11 +37,27 @@ public class HomeFragment extends Fragment{
         topics.add(new Topic(4,"Job","ic_job"));
         topics.add(new Topic(5,"Signal","ic_signal"));
         topics.add(new Topic(6,"Building","ic_building"));
-        rvItems =view.findViewById(R.id.RecyclerView);
+        rvItems =view.findViewById(R.id.TopicRecyclerView);
         GridLayoutManager layoutManager = new GridLayoutManager(view.getContext(), 2);
         rvItems.setLayoutManager(layoutManager);
         rvItems.setHasFixedSize(true);
         rvItems.setAdapter(new Topic_List_Adapter(view.getContext(), topics));
+        rvItems.addOnItemTouchListener(
+                new RecyclerTopicClickListener(getContext(), rvItems ,new RecyclerTopicClickListener.OnItemClickListener() {
+                    @Override public void onItemClick(View view, int position) {
+                        // do whatever
+                        WordListFragment fragment1 = new WordListFragment();
+                        FragmentManager fragmentManager = getParentFragmentManager();
+                        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                        fragmentTransaction.replace(R.id.nav_host_fragment_content_main, fragment1);
+                        fragmentTransaction.setReorderingAllowed(true).commit();
+                        }
+
+                    @Override
+                    public void onLongItemClick(View view, int position) {
+
+                    }
+                }));
         return view;
     }
 

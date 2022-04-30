@@ -1,4 +1,4 @@
-package thud.english_assistant.xuly;
+package thud.english_assistant.xuly.Topic;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;

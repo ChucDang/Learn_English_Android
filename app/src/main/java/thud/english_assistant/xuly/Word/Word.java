@@ -1,16 +1,21 @@
-package thud.english_assistant.xuly;
+package thud.english_assistant.xuly.Word;
+
+import thud.english_assistant.xuly.Topic.Topic;
 
 public class Word {
     private int id;
+    private String topic;
     private String name;
     private String meant;
-    private Type type;
-    enum Type{
-        Noun, Verb, Adv, Adj, None
+    private String type;
+
+    public Word() {
+        name = topic = meant = "";
+        type = "None";
     }
 
-    public Word(int id, String name, String meant, Type type) {
-        this.id = id;
+    public Word(String topic, String name, String meant, String type) {
+        this.topic = topic;
         this.name = name;
         this.meant = meant;
         this.type = type;
@@ -20,8 +25,12 @@ public class Word {
         return id;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public String getTopic() {
+        return topic;
+    }
+
+    public void setTopic(String topic) {
+        this.topic = topic;
     }
 
     public String getName() {
@@ -40,11 +49,11 @@ public class Word {
         this.meant = meant;
     }
 
-    public Type getType() {
+    public String getType() {
         return type;
     }
 
-    public void setType(Type type) {
+    public void setType(String type) {
         this.type = type;
     }
 }

@@ -1,4 +1,4 @@
-package thud.english_assistant.xuly;
+package thud.english_assistant.xuly.Topic;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -8,8 +8,6 @@ import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import thud.english_assistant.Topic;
 
 public class TopicRepository {
     private TopicDbHelper myTopicDbHelper;
@@ -42,12 +40,11 @@ public class TopicRepository {
             Log.i("Thông báo","Đã tồn tại topic trong Database");
         }
     }
-    public int updateTopic(int _id, String _name, String _img){
+    public int updateTopic(String _name){
         ContentValues values = new ContentValues();
         values.put(TopicDbHelper.TOPIC_NAME, _name);
-        values.put(TopicDbHelper.TOPIC_IMG, _img);
         return db.update(TopicDbHelper.TABLE_TOPIC, values,
-                TopicDbHelper.TOPIC_ID + " = " + _id, null);
+                TopicDbHelper.TOPIC_NAME + " = " + _name, null);
     }
     public int deleteTopic(String name) {
         return db.delete(TopicDbHelper.TABLE_TOPIC,

@@ -11,15 +11,21 @@
         android:label="@string/menu_home"
         tools:layout="@layout/fragment_home" />
 
-    <fragment
-        android:id="@+id/nav_gallery"
-        android:name="thud.english_assistant.ui.gallery.GalleryFragment"
-        android:label="@string/menu_favorite"
-        tools:layout="@layout/fragment_gallery" />
+<!--    <fragment-->
+<!--        android:id="@+id/nav_gallery"-->
+<!--        android:name="thud.english_assistant.ui.gallery.GalleryFragment"-->
+<!--        android:label="@string/menu_favorite"-->
+<!--        tools:layout="@layout/fragment_gallery" />-->
 
     <fragment
-        android:id="@+id/nav_slideshow"
+        android:id="@+id/nav_flash_card"
         android:name="thud.english_assistant.ui.slideshow.SlideshowFragment"
         android:label="@string/menu_flash_card"
         tools:layout="@layout/fragment_slideshow" />
+
+    <fragment
+        android:id="@+id/nav_wordlist"
+        android:name="thud.english_assistant.ui.home.WordListFragment"
+        android:label="@string/menu_Word_List"
+        tools:layout="@layout/fragment_words" />
 </navigation>
