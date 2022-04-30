@@ -4,6 +4,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,36 +12,46 @@ import java.util.List;
 import thud.english_assistant.Topic;
 
 public class TopicRepository {
-    private DbHelper myDbHelper;
+    private TopicDbHelper myTopicDbHelper;
     private SQLiteDatabase db;
-    private String[] allColumns = { DbHelper.TOPIC_ID,
-            DbHelper.TOPIC_NAME, DbHelper.TOPIC_IMG};
+    private String[] allColumns = { TopicDbHelper.TOPIC_ID,
+            TopicDbHelper.TOPIC_NAME, TopicDbHelper.TOPIC_IMG};
     public TopicRepository(Context context) {
-        myDbHelper = new DbHelper(context);
-        db = myDbHelper.getWritableDatabase();
+
+        myTopicDbHelper = new TopicDbHelper(context);
+        db = myTopicDbHelper.getWritableDatabase();
     }
+    public void insertListTopic(List<Topic> topics){
 
-    public TopicRepository() {
-
+        for (Topic i: topics
+             ) {
+            insertTopic(i);
+        }
     }
+    public void insertTopic(Topic topic) {
 
-    public long insertTopic(Topic topic) {
-        db = myDbHelper.getWritableDatabase();
-        ContentValues values = new ContentValues();
-        values.put(DbHelper.TOPIC_NAME, topic.getName_topic());
-        values.put(DbHelper.TOPIC_IMG, topic.getImg());
-        return db.insert(DbHelper.TABLE_TOPIC, null, values);
+        if(!KiemTra_Topic(topic.getName_topic())){
+            Log.i("Thông báo",topic.getName_topic());
+            db = myTopicDbHelper.getWritableDatabase();
+            ContentValues values = new ContentValues();
+            values.put(TopicDbHelper.TOPIC_NAME, topic.getName_topic());
+            values.put(TopicDbHelper.TOPIC_IMG, topic.getImg());
+            db.insert(TopicDbHelper.TABLE_TOPIC, null, values);
+            Log.i("Thông báo","Thêm topic thành công");
+        }else{
+            Log.i("Thông báo","Đã tồn tại topic trong Database");
+        }
     }
     public int updateTopic(int _id, String _name, String _img){
         ContentValues values = new ContentValues();
-        values.put(DbHelper.TOPIC_NAME, _name);
-        values.put(DbHelper.TOPIC_IMG, _img);
-        return db.update(DbHelper.TABLE_TOPIC, values,
-                DbHelper.TOPIC_ID + " = " + _id, null);
+        values.put(TopicDbHelper.TOPIC_NAME, _name);
+        values.put(TopicDbHelper.TOPIC_IMG, _img);
+        return db.update(TopicDbHelper.TABLE_TOPIC, values,
+                TopicDbHelper.TOPIC_ID + " = " + _id, null);
     }
-    public int deleteTopic(int _id) {
-        return db.delete(DbHelper.TABLE_TOPIC,
-                DbHelper.TOPIC_ID + " = " + _id, null);
+    public int deleteTopic(String name) {
+        return db.delete(TopicDbHelper.TABLE_TOPIC,
+                TopicDbHelper.TOPIC_NAME + " = " + name, null);
     }
     private Topic cursorToTopic(Cursor cursor) {
         Topic topic = new Topic();
@@ -52,7 +63,7 @@ public class TopicRepository {
     }
     public List<Topic> ListAllTopic() {
         List<Topic> lst_topic= new ArrayList<Topic>();
-        Cursor cursor = db.query(DbHelper.TABLE_TOPIC,
+        Cursor cursor = db.query(TopicDbHelper.TABLE_TOPIC,
                 allColumns, null, null, null, null, null);
         if (cursor.getCount() > 0) {
             cursor.moveToFirst();
@@ -65,20 +76,23 @@ public class TopicRepository {
         }
         return lst_topic;
     }
-    public Boolean KiemTra_Topic(int ms) {
+    public Boolean KiemTra_Topic(String nametopic) {
+
         Boolean daco = false;
         List<Topic> lst_topic = ListAllTopic();
         int i = 0;
-        while ((! daco) && (i < lst_topic.size()))
-            if (lst_topic.get(i).getId() == ms)
+        while ((! daco) && (i < lst_topic.size())){
+            if (lst_topic.get(i).getName_topic().equals(nametopic))
                 daco = true;
+
             else
                 i++;
+        }
         return daco;
     }
     public void close(){
         db.close();
-        myDbHelper.close();
+        myTopicDbHelper.close();
     }
 
 }

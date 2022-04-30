@@ -10,7 +10,6 @@ public class Topic {
         this.name_topic = name_topic;
         this.img = img;
     }
-
     public Topic() {
 
     }

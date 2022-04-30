@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="20dp"
+    android:layout_marginTop="10dp"
+
+    app:cardCornerRadius="10dp"
+    app:cardElevation="5dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="20dp"
+            android:layout_height="wrap_content"
+            android:background="#000000"
+            android:minHeight="80dp" />
+
+        <TextView
+            android:id="@+id/txt_word"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_toEndOf="@+id/view"
+            android:text="B1706677"
+            android:textColor="#000000"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/txt_meant"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="10dp"
+            android:layout_marginStart="108dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="8dp"
+            android:layout_toLeftOf="@+id/imgDelete"
+            android:layout_toEndOf="@+id/view"
+            android:layout_toRightOf="@+id/txt_word"
+            android:text="Đây là phần định nghĩ của từ này. Đây là phần định nghĩ của từ này Đây là phần định nghĩ của từ này Đây là phần định nghĩ của từ này"
+            android:textColor="#000000"
+            android:textSize="15dp"
+            android:textStyle="italic" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txt_word"
+            android:layout_alignStart="@+id/txt_word"
+            android:layout_marginEnd="10dp"
+            android:drawablePadding="5dp"
+            android:text="20"
+            android:textSize="15dp"
+            android:textStyle="bold"
+            app:drawableEndCompat="@drawable/ic_eye"
+            app:drawableTint="#000000" />
+
+        <ImageView
+            android:id="@+id/imgDelete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginVertical="10dp"
+            android:layout_marginEnd="10dp"
+            android:onClick="None"
+            android:src="@drawable/ic_delete"
+            app:tint="#000000" />
+
+        <ImageView
+            android:id="@+id/imgEdit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/imgDelete"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="10dp"
+            android:onClick="None"
+            android:src="@drawable/ic_edit"
+            app:tint="#000000" />
+
+    </RelativeLayout>
+</androidx.cardview.widget.CardView>

@@ -20,10 +20,14 @@ import thud.english_assistant.Topic;
 
 public class Topic_List_Adapter extends RecyclerView.Adapter<Topic_List_Adapter.ViewHolder> {
     private List<Topic> topics;
+    private TopicRepository topicRepository;
     private Context context;
     public Topic_List_Adapter(Context context, List<Topic> topics) {
         this.topics = topics;
         this.context = context;
+        topicRepository = new TopicRepository(context);
+        topicRepository.insertListTopic(topics);
+        topics=topicRepository.ListAllTopic();
     }
 
     public List<Topic> getTopics() {
@@ -53,14 +57,14 @@ public class Topic_List_Adapter extends RecyclerView.Adapter<Topic_List_Adapter.
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         // Get element from your dataset at this position and replace the
         // contents of the view with that element
-        holder.getTextView().setText(topics.get(position).getName_topic());
-        holder.getImageView().setImageResource(getResId(topics.get(position).getImg(),R.mipmap.class));
+        holder.getTextView().setText(topicRepository.ListAllTopic().get(position).getName_topic());
+        holder.getImageView().setImageResource(getResId(topicRepository.ListAllTopic().get(position).getImg(),R.mipmap.class));
 
     }
 
     @Override
     public int getItemCount() {
-        return topics.size();
+        return topicRepository.ListAllTopic().size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {

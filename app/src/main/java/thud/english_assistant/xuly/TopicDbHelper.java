@@ -4,8 +4,8 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-public class DbHelper extends SQLiteOpenHelper {
-    public static final String DB_NAME = "English_Assistant.db";
+public class TopicDbHelper extends SQLiteOpenHelper {
+    public static final String DB_NAME = "Test_1.db";
     private static final int DB_VERSION = 1;
     public static final String TABLE_TOPIC = "TOPIC";
     public static final String TOPIC_ID = "ID";
@@ -15,7 +15,7 @@ public class DbHelper extends SQLiteOpenHelper {
             = "Create Table " + TABLE_TOPIC + "("
             + TOPIC_ID + " Integer Primary Key Autoincrement, "
             + TOPIC_NAME + " Text, " + TOPIC_IMG + " Text)";
-    public DbHelper(Context context) {
+    public TopicDbHelper(Context context) {
         super(context, DB_NAME, null, DB_VERSION);
     }
     @Override
