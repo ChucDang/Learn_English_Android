@@ -4,9 +4,12 @@ public class Word {
     private int id;
     private String name;
     private String meant;
-    private Types_Of_Word type;
+    private Type type;
+    enum Type{
+        Noun, Verb, Adv, Adj, None
+    }
 
-    public Word(int id, String name, String meant, Types_Of_Word type) {
+    public Word(int id, String name, String meant, Type type) {
         this.id = id;
         this.name = name;
         this.meant = meant;
@@ -37,11 +40,11 @@ public class Word {
         this.meant = meant;
     }
 
-    public Types_Of_Word getType() {
+    public Type getType() {
         return type;
     }
 
-    public void setType(Types_Of_Word type) {
+    public void setType(Type type) {
         this.type = type;
     }
 }
